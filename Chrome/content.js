@@ -8,10 +8,14 @@ document.addEventListener("mousedown", function(event) {
 });
 
 document.addEventListener("contextmenu", function(event) {
-	if (event.target.tagName == "path") {
-		clickedEl = event.target.parentNode;
-	} else {
-	    clickedEl = event.target;
+	var currentElement = event.target;
+	while (currentElement) {
+		if (currentElement.tagName == "svg") {
+			clickedEl = currentElement;
+			break;
+		} else {
+			currentElement = currentElement.parentNode;
+		}
 	}
 });
 
