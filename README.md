@@ -14,7 +14,7 @@ Features:
 
 Installation
 --------
-You can get it here: [https://chrome.google.com/webstore/detail/inevent/mjmflhaljgohpgdciblbbgkldlpclajd](https://chrome.google.com/webstore/detail/inevent/mjmflhaljgohpgdciblbbgkldlpclajd)
+You can get it here: [https://chrome.google.com/webstore/detail/svg2png/mjmflhaljgohpgdciblbbgkldlpclajd](https://chrome.google.com/webstore/detail/svg2png/mjmflhaljgohpgdciblbbgkldlpclajd)
 
 Support
 --------
