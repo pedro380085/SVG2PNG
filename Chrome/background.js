@@ -5,6 +5,9 @@
 // Created by Pedro Góes
 // November, 2015
 
+var imageSize = "100";
+var imageName = "image";
+
 // A generic onclick callback function.
 function genericOnClick(info, tab) {
 
@@ -24,16 +27,16 @@ function genericOnClick(info, tab) {
 			return;
 		}
 
-		// Ask for image size
-		var size = prompt("Please enter your image size", "100");
-		size = (size != null) ? parseInt(size) : 256;
+		// Ask for image ize
+		imageSize = prompt("Please enter your image size", imageSize);
+		imageSize = (imageSize != null) ? parseInt(imageSize) : 256;
 
 		// Ask for image name
-		var name = prompt("Please enter your image name", "image");
-		if (name == null) name = "image";
+		imageName = prompt("Please enter your image name", imageName);
+		if (imageName == null) imageName = "image";
 
 		// Save on all retina forms (1x, 2x and 3x)
-		for (var i = 1; i < 4; i++) {
+		for (var i = 1; i <= 3; i++) {
 
 			// Declare closure
         	function generateImage(index) {
@@ -42,8 +45,8 @@ function genericOnClick(info, tab) {
 					var image = new Image; // Not shown on page
 					var svgAsXML = (new XMLSerializer).serializeToString(elementSVG);
 					image.src = 'data:image/svg+xml,' + encodeURIComponent(svgAsXML);
-					image.width = size * index;
-					image.height = size * index;
+					image.width = imageSize * index;
+					image.height = imageSize * index;
 
 					image.onload = function() {
 						// Draw our image on canvas
@@ -55,7 +58,7 @@ function genericOnClick(info, tab) {
 
 						// Download our image
 					    var a = document.createElement('a');
-				        a.download = name + ((index > 1) ? "@" + index + "x" : "") + ".png";
+				        a.download = imageName + ((index > 1) ? "@" + index + "x" : "") + ".png";
 				        a.href = canvas.toDataURL('image/png');
 				        document.body.appendChild(a);
 				        a.addEventListener("click", function(e) {

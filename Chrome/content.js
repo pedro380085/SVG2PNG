@@ -9,6 +9,8 @@ document.addEventListener("mousedown", function(event) {
 
 document.addEventListener("contextmenu", function(event) {
 	var currentElement = event.target;
+	
+	// Loop through parents until we find a svg
 	while (currentElement) {
 		if (currentElement.tagName == "svg") {
 			clickedEl = currentElement;
@@ -16,6 +18,11 @@ document.addEventListener("contextmenu", function(event) {
 		} else {
 			currentElement = currentElement.parentNode;
 		}
+	}
+
+	// Default to our target if none were found
+	if (!currentElement) {
+	    currentElement = event.target;
 	}
 });
 
