@@ -3,7 +3,7 @@
 
 	"name": "SVG2PNG",
 	"description": "Save inline <svg> as .png files",
-	"version": "1.0",
+	"version": "1.01",
 
 	"icons": {
 		"16": "split-16.png",
