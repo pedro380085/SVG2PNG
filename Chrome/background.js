@@ -14,7 +14,7 @@ function genericOnClick(info, tab) {
 	chrome.tabs.sendMessage(tab.id, "getClickedEl", function(response) {
 
 		// Get our element raw html
-        var elementHTML = response.value;
+		var elementHTML = response.value;
 
 		// Find <svg> element based on our unique class
 		var div = document.createElement("div");
@@ -39,8 +39,8 @@ function genericOnClick(info, tab) {
 		for (var i = 1; i <= 3; i++) {
 
 			// Declare closure
-        	function generateImage(index) {
-            	return function() {
+			function generateImage(index) {
+				return function() {
 					// Create an image
 					var image = new Image; // Not shown on page
 					var svgAsXML = (new XMLSerializer).serializeToString(elementSVG);
@@ -57,22 +57,22 @@ function genericOnClick(info, tab) {
 						ctx.drawImage(image, 0, 0, image.width, image.height);
 
 						// Download our image
-					    var a = document.createElement('a');
-				        a.download = imageName + ((index > 1) ? "@" + index + "x" : "") + ".png";
-				        a.href = canvas.toDataURL('image/png');
-				        document.body.appendChild(a);
-				        a.addEventListener("click", function(e) {
+						var a = document.createElement('a');
+						a.download = imageName + ((index > 1) ? "@" + index + "x" : "") + ".png";
+						a.href = canvas.toDataURL('image/png');
+						document.body.appendChild(a);
+						a.addEventListener("click", function(e) {
 							a.parentNode.removeChild(a);
-				        });
-				        a.click();
+						});
+						a.click();
 					};
 				}();
-           	}
+			}
 
            	// Execute it
            	generateImage(i);
-		}
-	});
+           }
+       });
 }
 
 // Create one item to our global context

@@ -3,7 +3,7 @@ var clickedEl = null;
 document.addEventListener("mousedown", function(event) {
     // right click
     if (event.button == 2) {
-        clickedEl = event.target;
+    	clickedEl = event.target;
     }
 });
 
@@ -22,18 +22,18 @@ document.addEventListener("contextmenu", function(event) {
 
 	// Default to our target if none were found
 	if (!currentElement) {
-	    currentElement = event.target;
+		currentElement = event.target;
 	}
 });
 
 chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request == "getClickedEl") {
+	if (request == "getClickedEl") {
     	// We must restore colors from inherited to inline
-		var styles = window.getComputedStyle(clickedEl);
+    	var styles = window.getComputedStyle(clickedEl);
     	clickedEl.style.fill = styles.getPropertyValue("fill");
     	clickedEl.style.stroke = styles.getPropertyValue("stroke");
 
     	// Pass element along
-        sendResponse({value: clickedEl.outerHTML});
+    	sendResponse({value: clickedEl.outerHTML});
     }
 });
