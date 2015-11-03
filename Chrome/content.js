@@ -28,6 +28,12 @@ document.addEventListener("contextmenu", function(event) {
 
 chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
     if (request == "getClickedEl") {
+    	// We must restore colors from inherited to inline
+		var styles = window.getComputedStyle(clickedEl);
+    	clickedEl.style.fill = styles.getPropertyValue("fill");
+    	clickedEl.style.stroke = styles.getPropertyValue("stroke");
+
+    	// Pass element along
         sendResponse({value: clickedEl.outerHTML});
     }
 });
